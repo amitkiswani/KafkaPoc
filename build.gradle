@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2' // Correct version of the Shadow plugin
+}
+
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.example.Main'
+        )
+    }
+
+
+}
+
+shadowJar {
+    archiveBaseName.set('KafkaPoc') // Set your desired base name for the JAR
+    archiveClassifier.set('')
+    archiveVersion.set('1.0.0') // Set your desired version
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    // implementation(group:'com.apple.pie.queue', name:'kafka-pie-client', version: '0.19.3')
+    implementation(group:'org.apache.commons', name:'commons-lang3', version: '3.14.0')
+    implementation (group: 'org.springframework.kafka', name: 'spring-kafka', version: "2.9.11")
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+tasks.build.dependsOn shadowJar
