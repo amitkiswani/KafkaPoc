@@ -34,7 +34,7 @@ public class KafkaProducerExample<T> {
 
     public static void publish() {
         Properties props = new Properties();
-        props.put("bootstrap.servers", "b-1.dev-clean-p1.ik1zdz.c4.kafka.us-west-2.amazonaws.com:9096,b-3.dev-clean-p1.ik1zdz.c4.kafka.us-west-2.amazonaws.com:9096,b-2.dev-clean-p1.ik1zdz.c4.kafka.us-west-2.amazonaws.com:9096");
+        props.put("bootstrap.servers", "");
         props.put("key.serializer", StringSerializer.class.getName());
         props.put("value.serializer", CustomSerializer.class.getName());
         // Add authentication properties
@@ -42,8 +42,8 @@ public class KafkaProducerExample<T> {
         props.put("sasl.mechanism", "SCRAM-SHA-512");
         props.put("sasl.jaas.config",
                 "org.apache.kafka.common.security.scram.ScramLoginModule required " +
-                        "username=\"core-services-clean-p1\" " +
-                        "password=\"fZ%AkETEC@K7WztO\";");
+                        "username=\"\" " +
+                        "password=\"\";");
 
         String topic = "core-services.dataclean.approvals.uw2";
 

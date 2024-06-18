@@ -19,7 +19,7 @@ public class KafkaConsumerExample {
         String topic = "core-services.dataclean.approvals.uw2";
 
         Properties props = new Properties();
-        props.put("bootstrap.servers", "b-1.dev-clean-p1.ik1zdz.c4.kafka.us-west-2.amazonaws.com:9096,b-3.dev-clean-p1.ik1zdz.c4.kafka.us-west-2.amazonaws.com:9096,b-2.dev-clean-p1.ik1zdz.c4.kafka.us-west-2.amazonaws.com:9096");
+        props.put("bootstrap.servers", "");
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
         props.put("value.deserializer", StringDeserializer.class.getName());
@@ -28,8 +28,8 @@ public class KafkaConsumerExample {
         props.put("sasl.mechanism", "SCRAM-SHA-512");
         props.put("sasl.jaas.config",
                 "org.apache.kafka.common.security.scram.ScramLoginModule required " +
-                        "username=\"core-services-clean-p1\" " +
-                        "password=\"fZ%AkETEC@K7WztO\";");
+                        "username=\"\" " +
+                        "password=\"\";");
 
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");  // To start consuming from the beginning
 
